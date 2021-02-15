@@ -2,7 +2,16 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
+/**
+ * Driver class for setting up an address book.
+ * @author Michael Langdon
+ * @since 02/15/2021
+ */
 public class AddressBookApplication {
+    /**
+     * The main method.  This calls the other methods to initialize the address book.
+     * @param args Command line arguments.  Not used.
+     */
     public static void main(String[] args) {
         AddressBook ab = AddressBook.getInstance();
         try {
@@ -14,6 +23,10 @@ public class AddressBookApplication {
         }
     }
 
+    /**
+     * Hard-coded entries that are then added to the address book.  Only used to test.
+     * @param addressBook The address book instance to add the entries to.
+     */
     public static void initAddressBookExercise(AddressBook addressBook) {
         AddressEntry addressEntry1 = new AddressEntry("Peggy",
                 "Sue", "123 Broadway St.", "Missoula",
@@ -27,6 +40,12 @@ public class AddressBookApplication {
         addressBook.list();
     }
 
+    /**
+     * Initializes an address book from a given file.
+     * @param filename Name of the file containing address entries.  Given as a <code>String</code>
+     * @param addressBook The instance of the address book to add the entries to.
+     * @throws IOException If file is not found or bad input is given an exception is thrown.
+     */
     public static void init(String filename, AddressBook addressBook) throws IOException {
         // Stores a single line read from the file.
         String line;
@@ -118,43 +137,75 @@ public class AddressBookApplication {
         fileReader.close();
     }
 
+    /**
+     * Checks if the first name is valid.
+     * @param line Current line read from the file.  A <code>String</code>
+     * @return True if valid.  False if not.
+     */
     private static boolean firstNameIsValid(String line) {
-        // TODO:  validate
-        return true;  // filler
+        return (line != null);
     }
 
+    /**
+     * Checks if last name is valid.
+     * @param line Current line read from the file.  A <code>String</code>
+     * @return True if valid.  False if not.
+     */
     private static boolean lastNameIsValid(String line) {
-        // TODO:  validate
-        return true;  // filler
+        return (line != null);
     }
 
+    /**
+     * Checks if street address is valid.
+     * @param line Current line read from the file.  A <code>String</code>
+     * @return True if valid.  False if not.
+     */
     private static boolean streetIsValid(String line) {
-        // TODO:  validate
-        return true;  // filler
+        return (line != null);
     }
 
+    /**
+     * Checks if city is valid.
+     * @param line Current line read from the file.  A <code>String</code>
+     * @return True if valid.  False if not.
+     */
     private static boolean cityIsValid(String line) {
-        // TODO:  validate
-        return true;  // filler
+        return (line != null);
     }
 
+    /**
+     * Checks if state is valid.
+     * @param line Current line read from the file.  A <code>String</code>
+     * @return True if valid.  False if not.
+     */
     private static boolean stateIsValid(String line) {
-        // TODO:  validate
-        return true;  // filler
+        return (line != null);
     }
 
+    /**
+     * Checks if zip code is valid.
+     * @param line Current line read from the file.  A <code>String</code>
+     * @return True if valid.  False if not.
+     */
     private static boolean zipIsValid(String line) {
-        // TODO:  validate
-        return true;  // filler
+        return (line != null);
     }
 
+    /**
+     * Checks if phone number is valid.
+     * @param line Current line read from the file.  A <code>String</code>
+     * @return True if valid.  False if not.
+     */
     private static boolean phoneIsValid(String line) {
-        // TODO:  validate
-        return true;  // filler
+        return (line != null);
     }
 
+    /**
+     * Checks if email is valid.
+     * @param line Current line read from the file.  A <code>String</code>
+     * @return True if valid.  False if not.
+     */
     private static boolean emailIsValid(String line) {
-        // TODO:  validate
-        return true;  // filler
+        return (line != null);
     }
 }
