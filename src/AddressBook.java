@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * This class simulates an address book using an <code>ArrayList<>()</code>.
@@ -12,14 +11,15 @@ public final class AddressBook {
     // This is the only instance of this class since it is a singleton class.
     private static AddressBook INSTANCE;
 
-    List<AddressEntry> addressEntryList;
+    // Using a TreeMap since the values are stored in order and retrieval/removal is quick.
+    private TreeMap<String, AddressEntry> addressEntryList;
 
     /**
      * Sets up a list to hold entries for the address book.
      * Must be called by <code>getInstance()</code>.
      */
     private AddressBook() {
-        addressEntryList = new ArrayList<>();
+        addressEntryList = new TreeMap<>();
     }
 
     /**
@@ -38,7 +38,8 @@ public final class AddressBook {
      * @param addressEntry an AddressEntry object.
      */
     public void add(AddressEntry addressEntry) {
-        addressEntryList.add(addressEntry);
+        // Entries are indexed by the last name
+        addressEntryList.put(addressEntry.getLastName(), addressEntry);
     }
 
     /**
@@ -46,8 +47,14 @@ public final class AddressBook {
      * and prints it to the screen.
      */
     public void list() {
-        for (AddressEntry e : addressEntryList) {
-            System.out.println(e);
+        // Create a set of the entries
+        Set set = addressEntryList.entrySet();
+        // Create an iterator
+        Iterator iterator = set.iterator();
+        // Iterate through the set
+        while (iterator.hasNext()) {
+            Map.Entry entry = (Map.Entry)iterator.next();
+            System.out.println(entry.getValue());
         }
     }
 }

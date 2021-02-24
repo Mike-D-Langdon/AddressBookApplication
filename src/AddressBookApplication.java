@@ -8,19 +8,22 @@ import java.io.IOException;
  * @since 02/15/2021
  */
 public class AddressBookApplication {
+    // Creating a static class variable for the address book:
+    static AddressBook ab = AddressBook.getInstance();
     /**
      * The main method.  This calls the other methods to initialize the address book.
      * @param args Command line arguments.  Not used.
      */
     public static void main(String[] args) {
-        AddressBook ab = AddressBook.getInstance();
-        try {
-            init("/Users/room237/Desktop/Spring2021/CS401/AddressBookApplication/src/file_with_addresses.txt", ab);
-            ab.list();
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            init("/Users/room237/Desktop/Spring2021/CS401/AddressBookApplication/src/file_with_addresses.txt");
+//            ab.list();
+//
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+        initAddressBookExercise(ab);
     }
 
     /**
@@ -43,10 +46,9 @@ public class AddressBookApplication {
     /**
      * Initializes an address book from a given file.
      * @param filename Name of the file containing address entries.  Given as a <code>String</code>
-     * @param addressBook The instance of the address book to add the entries to.
      * @throws IOException If file is not found or bad input is given an exception is thrown.
      */
-    public static void init(String filename, AddressBook addressBook) throws IOException {
+    public static void init(String filename) throws IOException {
         // Stores a single line read from the file.
         String line;
         // Stores the first name, given on first (9th, 17th...) line of file, if valid.
@@ -74,6 +76,7 @@ public class AddressBookApplication {
         try {
             // Read contents of file until end of file
             while ((line = bufferedReader.readLine()) != null) {
+                // This is always true, but I'm leaving it to conform to the pattern.
                 if (firstNameIsValid(line)) {
                     lineFirstName = line;
                     // Input is valid so get the next line.
@@ -126,7 +129,7 @@ public class AddressBookApplication {
                 AddressEntry addressEntry = new AddressEntry(lineFirstName, lineLastName, lineStreet, lineCity, lineState, lineZip,
                         linePhone, lineEmail);
                 // Add this entry to the address book.
-                addressBook.add(addressEntry);
+                ab.add(addressEntry);
             }
 
         } catch (IOException e) {
