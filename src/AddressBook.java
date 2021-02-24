@@ -1,7 +1,7 @@
 import java.util.*;
 
 /**
- * This class simulates an address book using an <code>ArrayList<>()</code>.
+ * This class simulates an address book using a <code>TreeMap<>()</code>.
  * It is designed to be used as a singleton object.
  * @author Michael Langdon
  * @since 02/15/2021
