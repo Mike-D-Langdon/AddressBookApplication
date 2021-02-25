@@ -1,8 +1,5 @@
 import java.io.IOException;
-import java.util.NavigableMap;
 import java.util.Scanner;
-import java.util.Set;
-import java.util.SortedMap;
 
 /**
  * This class contains a group of prompts to acquire input from a user.
@@ -52,8 +49,12 @@ public class Menu {
             case 'e':
                 listSelected();
                 break;
-            default:
+            case 'f':
                 quitSelected();
+                break;
+            default:
+                // Default to 'quit' if anything else selected.
+                selection = 'f';
         }
         return selection;
     }
