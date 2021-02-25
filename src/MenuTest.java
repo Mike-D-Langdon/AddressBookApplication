@@ -5,25 +5,14 @@ import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * Tests all the methods of the Menu class
- */
 class MenuTest {
     // Set up an AddressBook to test with
-    static AddressBook ab = AddressBook.getInstance();
+    AddressBook ab = AddressBook.getInstance();
+    AddressEntry addressEntry1 = new AddressEntry("Peggy",
+            "Sue", "123 Broadway St.", "Missoula",
+            "MO", 44354, "498-355-8675", "p.sue@email.com");
 
-    /**
-     * Tests if 'f' (the default return value) is returned.
-     * @throws IOException
-     */
-    @Test
-    void testDisplayMenu_ReturnsDefaultChar() throws IOException {
-        assertEquals('f', Menu.displayMenu());
-    }
 
-    /**
-     * Tests that an exception is thrown.
-     */
     @Test
     void testDisplayMenu_ThrowsException() {
         Exception exception = assertThrows(IOException.class, () ->
@@ -33,59 +22,87 @@ class MenuTest {
 
 
     @Test
-    void testLoadSelected_LoadsFile() throws IOException {
-
+    void testLoadSelected_Pass() throws IOException {
+        Menu.loadSelected();
+        System.out.println("Should see a prompt to enter a file name.");
     }
 
     @Test
-    void addSelected() {
+    void testAddSelected() {
+        Menu.addSelected();
+        System.out.println("Should see a prompt to enter a first name.");
     }
 
     @Test
-    void removeSelected() {
+    void testRemoveSelected() {
+        Menu.removeSelected();
+        System.out.println("Should see a prompt to search for a last name.");
     }
 
     @Test
-    void findSelected() {
+    void testFindSelected() {
+        Menu.findSelected();
+        System.out.println("Should see a prompt to search for a last name.");
     }
 
     @Test
-    void listSelected() {
+    void testListSelected() {
+        ab.add(addressEntry1);
+        Menu.listSelected();
+        System.out.println("Should see a listing of 1 entry.");
     }
 
     @Test
-    void quitSelected() {
+    void testQuitSelected() {
+        Menu.quitSelected();
+        System.out.println("Should see a message saying Goodbye!");
     }
 
     @Test
-    void prompt_FirstName() {
+    void testPrompt_FirstName() {
+        Menu.prompt_FirstName();
+        System.out.println("Should see a message prompting for first name.");
     }
 
     @Test
-    void prompt_LastName() {
+    void testPrompt_LastName() {
+        Menu.prompt_LastName();
+        System.out.println("Should see a message prompting for last name.");
     }
 
     @Test
-    void prompt_Street() {
+    void testPrompt_Street() {
+        Menu.prompt_Street();
+        System.out.println("Should see a message prompting for street.");
     }
 
     @Test
-    void prompt_City() {
+    void testPrompt_City() {
+        Menu.prompt_City();
+        System.out.println("Should see a message prompting for city.");
     }
 
     @Test
-    void prompt_State() {
+    void testPrompt_State() {
+        Menu.prompt_State();
+        System.out.println("Should see a message prompting for state.");
     }
 
     @Test
-    void prompt_Zip() {
+    void testPrompt_Zip() {
+        Menu.prompt_Zip();
+        System.out.println("Should see a message prompting for zip code.");
     }
 
     @Test
-    void prompt_Telephone() {
+    void testPrompt_Telephone() {
+        Menu.prompt_Telephone();
+        System.out.println("Should see a message prompting for telephone number.");
     }
 
     @Test
-    void prompt_Email() {
+    void testPrompt_Email() {
+        Menu.prompt_Email();
+        System.out.println("Should see a message prompting for email address.");
     }
 }
